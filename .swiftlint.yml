@@ -1,0 +1,32 @@
+# SwiftLint — контроль качества (стиль отдаём SwiftFormat)
+disabled_rules:
+  - trailing_comma          # за запятые отвечает SwiftFormat
+  - opening_brace           # за перенос скобок отвечает SwiftFormat
+  - todo
+
+opt_in_rules:
+  - empty_count
+  - first_where
+  - force_unwrapping
+  - sorted_first_last
+
+excluded:
+  - .build
+  - build
+  - DerivedData
+
+identifier_name:
+  min_length: 2
+  # s/m/l — намеренная шкала отступов xs/s/m/l/xl в дизайн-токенах
+  excluded: [id, x, y, s, m, l]
+
+line_length:
+  warning: 120
+  ignores_comments: true
+
+type_name:
+  excluded: [music_playerApp]
+
+type_body_length:
+  warning: 320
+  error: 420

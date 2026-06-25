@@ -1,0 +1,13 @@
+# SwiftFormat — единый стиль форматирования
+--swiftversion 5.0
+--indent 4
+--maxwidth 110
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--self remove
+--commas inline
+--trimwhitespace always
+--stripunusedargs closure-only
+
+--exclude .build,build,DerivedData

@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build & Run (Debug)",
+      "type": "shell",
+      "command": "scripts/run.sh Debug",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build & Run (Release)",
+      "type": "shell",
+      "command": "scripts/run.sh Release",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint (SwiftLint)",
+      "type": "shell",
+      "command": "export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer && swiftlint lint --quiet music-player",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Format (SwiftFormat)",
+      "type": "shell",
+      "command": "export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer && swiftformat music-player",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
