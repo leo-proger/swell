@@ -19,6 +19,10 @@
 
 ---
 
+<img width="1052" height="864" alt="Screenshot 2026-06-27 at 20 30 26" src="https://github.com/user-attachments/assets/c253fe18-c67e-4aa2-9a1b-5bee912c7cdd" />
+
+---
+
 **Swell** is a hand-crafted macOS music player for people who keep their music as files, not subscriptions. Point it at a folder and it gives you a fast, gorgeous way to listen — a transparent, blurred window with an ambient color wash pulled from the current cover, and an Apple Music–style queue underneath.
 
 No accounts. No telemetry. No cloud. Just your library and a beautiful player.
