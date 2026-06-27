@@ -169,21 +169,27 @@ struct QueueView: View {
     }
 
     /// Строка предстоящего трека (общая для обеих зон Up Next): тап → играть отсюда,
-    /// контекстное меню → убрать из очереди.
+    /// контекстное меню → убрать из очереди. Клик задаём через `Button`, а не
+    /// `onTapGesture`: тогда нативный drag-to-reorder списка не блокируется тапом и
+    /// строку можно тащить целиком (а не цепляться за край).
     private func queueRow(_ track: Track) -> some View {
-        QueueRow(track: track, style: .upNext)
-            .listRowBackground(Color.clear)
-            .listRowSeparator(.hidden)
-            .listRowInsets(rowInsets)
-            .contentShape(Rectangle())
-            .onTapGesture { engine.jumpTo(track) }
-            .contextMenu {
-                Button(role: .destructive) {
-                    engine.removeFromQueue(track)
-                } label: {
-                    Label("Remove from queue", systemImage: "minus.circle")
-                }
+        Button {
+            engine.jumpTo(track)
+        } label: {
+            QueueRow(track: track, style: .upNext)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
+        .listRowInsets(rowInsets)
+        .contextMenu {
+            Button(role: .destructive) {
+                engine.removeFromQueue(track)
+            } label: {
+                Label("Remove from queue", systemImage: "minus.circle")
             }
+        }
     }
 
     // MARK: - Вспомогательное
@@ -193,15 +199,10 @@ struct QueueView: View {
         EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0)
     }
 
-    /// Заголовок секции на матовой стеклянной «пилюле» — текст читается, когда под
-    /// закреплённым заголовком проезжает контент.
     private func sectionLabel(_ title: String, icon: String) -> some View {
         Label(title, systemImage: icon)
             .font(.caption.weight(.semibold))
             .foregroundStyle(.secondary)
             .textCase(nil)
-            .padding(.horizontal, Theme.Spacing.s)
-            .padding(.vertical, 5)
-            .glassEffect(.regular, in: .capsule)
     }
 }
